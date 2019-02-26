@@ -8,19 +8,28 @@ import QRCode from '@/vues/QRCode'
 import Carousel from '@/vues/Carousel'
 import StoreTest from '@/vues/StoreTest'
 import Excel from '@/vues/Excel'
+import Login from '@/vues/Login'
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
+      name: '登录',
+      component: Login
+    },
+    {
+      path: '/home',
       name: 'Main',
       component: Main,
       children: [
         {
           path: '/HelloWorld',
           name: 'HelloWorld',
-          component: HelloWorld
+          component: HelloWorld,
+          meta: {
+            requireAuth: true
+          }
         },
         {
           path: '/day01',
@@ -55,4 +64,18 @@ export default new Router({
       ]
     }
   ]
+})
+
+export default router
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requireAuth) {
+    if (false) {
+      next()
+    } else {
+      next('/')
+    }
+  } else {
+    next()
+  }
 })
