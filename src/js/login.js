@@ -24,11 +24,11 @@ function loadUse() {
     debugger
     vm.$http.get('http://localhost:8088/user/login')
                   .then(function (response) {
-                    console.log(response);
+                    console.log(response)
                     let list = response.data
                     vm.name = list[0].userName
                   })
                   .catch(function (error) {
-                    console.log(error);
+                    console.log(error)
                 })
 }

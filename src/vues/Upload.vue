@@ -4,7 +4,7 @@
     <div style="width:400px">
     <el-upload
       class="upload-demo"
-      action="http://localhost:9090/mqlog/upload"
+      action="http://localhost:8088/user/upload"
       :on-preview="handlePreview"
       :on-remove="handleRemove"
       :before-remove="beforeRemove"
