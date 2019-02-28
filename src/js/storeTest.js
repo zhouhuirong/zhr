@@ -5,7 +5,13 @@ export default {
             name: '嘻嘻',
             num: '',
             show: false,
-            session: '...'
+            session: '...',
+            userForm: {
+                sid: '',
+                userName: '',
+                age: '',
+                adds: ''
+            }
         }
     },
     created(){
@@ -30,6 +36,22 @@ export default {
         },
         removeNumSession(){
             this.$store.commit('remove_numSession')
+        },
+        onSubmit(userForm){
+            let body = vm.userForm
+            this.$http.post('http://localhost:8088/user/inster', body)
+                  .then(function (response) {
+                      debugger
+                    vm.$message.success("新增成功")
+                    vm.$refs[userForm].resetFields()
+                  })
+                  .catch(function (error) {
+                    vm.$message.error("异常")
+                })
+        },
+        resetForm(userForm){
+            debugger
+            vm.$refs[userForm].resetFields()
         }
     }
 }
