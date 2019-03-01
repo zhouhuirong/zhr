@@ -39,7 +39,7 @@ export default {
         },
         onSubmit(userForm){
             let body = vm.userForm
-            this.$http.post('http://localhost:8088/user/inster', body)
+            this.$http.post('http://localhost:8089/user/inster', body)
                   .then(function (response) {
                       debugger
                     vm.$message.success("新增成功")

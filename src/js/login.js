@@ -22,7 +22,7 @@ function loadUse() {
     //    vm.name = list[0].userName
     // })
     debugger
-    vm.$http.get('http://localhost:8088/user/login')
+    vm.$http.get('http://localhost:8089/user/login')
                   .then(function (response) {
                     console.log(response)
                     let list = response.data

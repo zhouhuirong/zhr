@@ -14,7 +14,7 @@ export default {
         handleRemove(file, fileList) {
             debugger
             if (file.status === 'success') {
-                this.$http.get('http://localhost:8088/user/remove'+'?name='+file.name+'&uid='+file.uid,)
+                this.$http.get('http://localhost:8089/user/remove'+'?name='+file.name+'&uid='+file.uid,)
                   .then(function (response) {
                     console.log(response);
                     debugger
