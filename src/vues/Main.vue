@@ -18,6 +18,7 @@
                 <el-menu-item index="/Carousel">走马灯</el-menu-item>
                 <el-menu-item index="/StoreTest">store</el-menu-item>
                 <el-menu-item index="/Excel">excel表格</el-menu-item>
+                <el-menu-item index="/Download">文件下载</el-menu-item>
             </el-submenu>
             </el-menu>
        </el-aside>

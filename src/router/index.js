@@ -9,6 +9,7 @@ import Carousel from '@/vues/Carousel'
 import StoreTest from '@/vues/StoreTest'
 import Excel from '@/vues/Excel'
 import Login from '@/vues/Login'
+import Download from '@/vues/Download'
 Vue.use(Router)
 
 const router = new Router({
@@ -60,6 +61,11 @@ const router = new Router({
           path: '/Excel',
           name: 'Excel',
           component: Excel
+        },
+        {
+          path: '/Download',
+          name: 'Download',
+          component: Download
         }
       ]
     }
