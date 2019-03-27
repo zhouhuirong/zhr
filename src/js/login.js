@@ -13,6 +13,9 @@ export default {
     methods: {
         login(){
             vm.$router.replace({ path: '/home' })
+        },
+        PDF(){
+          vm.$router.replace({ path: '/PDF' })
         }
     }
 }

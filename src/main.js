@@ -13,6 +13,7 @@ import VueCookie from 'vue-cookies' //cookie
 import store from './store' //vuex 数据存储
 import Dialog from '@/vues/Dialog' //导入组件（并在APP.vue中使用了）
 import excel from '@/plugins/excel.js' //导出excel表格
+import importExcel from '@/components/importExcel' //导入excel全局组件
 
 Vue.prototype.$http = axios
 Vue.prototype.$echarts = echarts
@@ -22,6 +23,7 @@ Vue.prototype.$QRCode = QRCode
 const components = {
   install: function (Vue) {
     Vue.component('Dialog', Dialog)
+    Vue.component('importExcel', importExcel)
   }
 }
 

@@ -10,14 +10,21 @@ import StoreTest from '@/vues/StoreTest'
 import Excel from '@/vues/Excel'
 import Login from '@/vues/Login'
 import Download from '@/vues/Download'
+import PDF from '@/vues/PDF'
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
       name: '登录',
       component: Login
+    },
+    {
+      path: '/PDF',
+      name: 'PDF',
+      component: PDF
     },
     {
       path: '/home',
