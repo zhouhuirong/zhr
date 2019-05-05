@@ -12,6 +12,7 @@
 import XLSX from 'xlsx'
 
 export default {
+
   props: {
     beforeUpload: Function,
     onSuccess: Function
@@ -24,6 +25,9 @@ export default {
         results: null
       }
     }
+  },
+  mounted() {
+    vm = this
   },
   methods: {
     generateDate({ header, results }) {

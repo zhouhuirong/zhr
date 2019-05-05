@@ -23,7 +23,7 @@ export default {
                     {name: '希望3', age: 100, adds: '曙光'},
                     {name: '希望4', age: 100, adds: '曙光'}
           ],
-          header: ['userName', 'age', 'adds'],
+          header: ['姓名', '年龄', '地址'],
           filterval: ['name', 'age', 'adds'],
           tableData: [],
           tableHeader: []
@@ -39,6 +39,7 @@ export default {
       excel(){
           vm.$exports(vm.exceles, vm.header, vm.filterval, vm.name)
       },
+      
       beforeUpload(file) {
       debugger
       const isLt2M = file.size / 1024 / 1024 < 1
@@ -53,9 +54,10 @@ export default {
      },
      handleSuccess({ results, header }) {
        debugger
-       this.tableData = results
-       this.tableHeader = header
-       this.$http.post('http://localhost:8089/user/importExcel',results)
+       this.tableData = results // 展示数据用
+       this.tableHeader = header // 展示数据用
+       const newResult = this.get_results_row(results) //数据转换成需要格式
+       this.$http.post('http://localhost:8089/user/importExcel', newResult)
                   .then(function (response) {
                     console.log(response);
                     vm.$message.success("Excel导入成功")
@@ -63,7 +65,28 @@ export default {
                   .catch(function (error) {
                     console.log(error);
                 });
-     }
+     },
+     // 因为表头大多是中文名称，可以改成对应的数据库字段
+    get_results_row(outdata) {
+      let list = []
+　　  var obj = {}
+      outdata.forEach((item, index) => {
+       obj = {}
+       for (var key in item) {
+         // 去除所有空格
+         let keyString = key.replace(/\s*/g,"")
+         if (keyString === '姓名') {
+　　　　　　　　obj['userName'] = item[key]
+　　　　　　} else if(keyString === '年龄') {
+　　　　　　　　obj['age'] = item[key]
+　　　　　　} else if(keyString === '地址') {
+　　　　　　　　obj['adds'] = item[key]
+　　　　　　}
+       }
+       list.push(obj)
+     })
+　　  return list
+    }
 
     }
 }
